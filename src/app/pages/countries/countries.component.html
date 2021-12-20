@@ -1,0 +1,9 @@
+<section class="container mx-auto" *ngIf="countriesService.countries$">
+  <app-filter></app-filter>
+
+  <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mx-4 sm:mx-0">
+    <ng-container *ngFor="let country of countriesService.countries$ | async">
+      <app-country-card [country]="country"></app-country-card>
+    </ng-container>
+  </div>
+</section>

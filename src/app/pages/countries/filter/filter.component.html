@@ -1,0 +1,35 @@
+<div class="block justify-between mt-6 mx-4 md:flex">
+  <div
+    class="relative text-gray-600 lg:w-3/4 w-full mb-4 lg:mb-0 focus-within:text-gray-400"
+  >
+    <span class="absolute inset-y-0 left-0 flex items-center pl-2">
+      <button
+        type="submit"
+        class="p-1 focus:outline-none focus:shadow-outline items-center"
+      >
+        <i class="fas fa-search align-text-top"></i>
+      </button>
+    </span>
+    <input
+      type="text"
+      id="searchInput"
+      name="searchInput"
+      placeholder="Search for a country..."
+      class="bg-white dark:bg-dark-blue dark:text-white pl-10 shadow appearance-none rounded p-4 lg:w-2/4 w-full text-gray-700 leading-tight text-sm focus:outline-none focus:shadow-outline"
+      (keydown.enter)="$event.preventDefault()"
+      (keyup)="onKeyUp($event)"
+    />
+  </div>
+
+  <select
+    class="bg-white dark:bg-dark-blue dark:text-white shadow rounded p-4 pr-10 lg:w-1/4 w-full mb-4 lg:mb-0 text-gray-700 leading-tight text-sm focus:outline-none focus:shadow-outline"
+    name="filter"
+    id="filter"
+    (change)="regionSelect($event)"
+  >
+    <option value="" selected>Filter by Region</option>
+    <option *ngFor="let subregion of subregions" [value]="subregion">
+      {{ subregion }}
+    </option>
+  </select>
+</div>

@@ -1,0 +1,106 @@
+<section class="h-screen sm:mx-12" *ngIf="countriesService.countries$">
+  <div class="mx-8 my-8">
+    <button
+      routerLink="/"
+      class="bg-white text-very-dark-blue-text px-10 py-2 my-3 rounded-lg shadow-lg dark:bg-dark-blue dark:text-white focus:outline-none"
+    >
+      <i class="fas fa-arrow-left mr-1"></i>
+      Back
+    </button>
+  </div>
+
+  <div class="grid grid-cols-1 gap-0 mx-0 sm:grid-cols-2">
+    <div class="m-8">
+      <img [src]="country.flags.svg" alt="Flag" class="shadow max-h-[600px]" />
+    </div>
+
+    <div class="ml-8 mt-10">
+      <h1 class="text-3xl font-bold mb-6 dark:text-white">
+        {{ country.name.common }}
+      </h1>
+
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div class="-mb-4 sm:mb-0">
+          <div class="flex text-sm mb-4 dark:text-white">
+            <h6 class="font-semibold mr-1">Native Name:</h6>
+            <p>{{ nativeName }}</p>
+          </div>
+
+          <div class="flex text-sm mb-4 dark:text-white">
+            <h6 class="font-semibold mr-1">Population:</h6>
+            <p>{{ country.population.toLocaleString() }}</p>
+          </div>
+
+          <div class="flex text-sm mb-4 dark:text-white">
+            <h6 class="font-semibold mr-1">Region:</h6>
+            <p>{{ country.region }}</p>
+          </div>
+
+          <div class="flex text-sm mb-4 dark:text-white">
+            <h6 class="font-semibold mr-1">Sub Region:</h6>
+            <p>{{ country.subregion }}</p>
+          </div>
+
+          <div class="flex text-sm mb-4 dark:text-white">
+            <h6 class="font-semibold mr-1">Capital:</h6>
+            <p>{{ country.capital }}</p>
+          </div>
+        </div>
+
+        <div>
+          <div class="flex text-sm mb-4 dark:text-white">
+            <h6 class="font-semibold mr-1">Top Level Domain:</h6>
+            <p *ngFor="let tld of country.tld">{{ tld }}</p>
+          </div>
+
+          <div class="flex text-sm mb-4 dark:text-white">
+            <h6 class="font-semibold mr-1">Currencies:</h6>
+            <p>{{ currencies }}</p>
+          </div>
+
+          <div class="flex text-sm mb-4 dark:text-white">
+            <h6 class="font-semibold mr-1">Languages:</h6>
+            <p>{{ languages }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="text-sm mr-4 mt-4 sm:mr-0 sm:mt-12 dark:text-white"
+        *ngIf="country.borders; else noBorders"
+      >
+        <h6 class="text-lg font-semibold self-center mb-3">
+          Border Countries:
+        </h6>
+        <div
+          class="grid gap-4 grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+        >
+          <button
+            *ngFor="let border of borderCountries"
+            [routerLink]="['../../country/' + border.cca3]"
+            class="bg-white text-very-dark-blue-text px-10 py-2 rounded-lg shadow font-semibold dark:bg-dark-blue dark:text-white hover:shadow-lg focus:outline-none"
+          >
+            {{ border.name.common }}
+          </button>
+        </div>
+      </div>
+
+      <ng-template #noBorders>
+        <div class="text-sm mr-4 mt-4 sm:mr-0 sm:mt-12 dark:text-white">
+          <h6 class="text-lg font-semibold self-center mb-3">
+            Border Countries:
+          </h6>
+          <div
+            class="grid gap-4 grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+          >
+            <button
+              class="bg-white text-very-dark-blue-text px-10 py-2 rounded-lg shadow font-semibold cursor-default dark:bg-dark-blue dark:text-white focus:outline-none"
+            >
+              No borders exist
+            </button>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</section>

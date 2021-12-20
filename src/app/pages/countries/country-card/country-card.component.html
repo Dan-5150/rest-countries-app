@@ -1,0 +1,29 @@
+<div
+  class="bg-white dark:bg-dark-blue max-w-sm overflow-hidden shadow-lg rounded-lg flex flex-col justify-center border-1 border-gray-300 mx-auto sm:m-4 min-h-[360px] cursor-pointer hover:scale-105"
+  [routerLink]="['country/' + country.cca3]"
+>
+  <img
+    [src]="country.flags.svg"
+    [alt]="country.name.official + ' Flag'"
+    class="rounded-t-lg object-cover max-h-[200px] min-h-[200px] max-w-full"
+  />
+
+  <div class="p-6 pb-10">
+    <h2 class="text-xl font-semibold mb-3 dark:text-white">
+      {{ country.name.common }}
+    </h2>
+
+    <div class="flex text-sm mb-2 dark:text-white">
+      <h6 class="font-semibold mr-1">Population:</h6>
+      <p>{{ country.population.toLocaleString() }}</p>
+    </div>
+    <div class="flex text-sm mb-2 dark:text-white">
+      <h6 class="font-semibold mr-1">Region:</h6>
+      <p>{{ country.region }}</p>
+    </div>
+    <div class="flex text-sm dark:text-white">
+      <h6 class="font-semibold mr-1">Capital:</h6>
+      <p>{{ country.capital }}</p>
+    </div>
+  </div>
+</div>
