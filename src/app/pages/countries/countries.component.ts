@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from "@angular/platform-browser";
 
 import { CountriesService } from '../../services/countries.service';
 
@@ -12,7 +13,9 @@ export class CountriesComponent implements OnInit {
    * 
    * @param {CountriesService} countriesService
    */
-  constructor(public countriesService: CountriesService) {}
+  constructor(public countriesService: CountriesService, private titleService: Title) {
+    this.titleService.setTitle("Countries App");
+  }
 
   /**
    * Get list of all countries

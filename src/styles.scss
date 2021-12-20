@@ -5,12 +5,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap");
 
 * {
-  // background-color: hsl(0, 0%, 98%);
   transition: all 0.2s ease-in-out;
 }
 
 html,
 body {
   font-family: "Nunito Sans", sans-serif;
+}
+
+body {
   background-color: hsl(0, 0%, 98%);
+
+  &.dark {
+    background-color: hsl(207, 26%, 17%);
+  }
 }

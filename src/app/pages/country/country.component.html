@@ -1,4 +1,4 @@
-<section class="h-screen sm:mx-12" *ngIf="countriesService.countries$">
+<section class="sm:mx-12" *ngIf="countriesService.countries$">
   <div class="mx-8 my-8">
     <button
       routerLink="/"
@@ -66,7 +66,7 @@
       </div>
 
       <div
-        class="text-sm mr-4 mt-4 sm:mr-0 sm:mt-12 dark:text-white"
+        class="text-sm mr-4 my-4 sm:mr-0 sm:mt-12 dark:text-white"
         *ngIf="country.borders; else noBorders"
       >
         <h6 class="text-lg font-semibold self-center mb-3">
@@ -86,7 +86,7 @@
       </div>
 
       <ng-template #noBorders>
-        <div class="text-sm mr-4 mt-4 sm:mr-0 sm:mt-12 dark:text-white">
+        <div class="text-sm mr-4 my-4 sm:mr-0 sm:mt-12 dark:text-white">
           <h6 class="text-lg font-semibold self-center mb-3">
             Border Countries:
           </h6>

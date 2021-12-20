@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from "@angular/platform-browser";
 import { ActivatedRoute, Params } from '@angular/router';
 
 import { Country } from '../../models/country.model';
@@ -78,7 +79,8 @@ export class CountryComponent implements OnInit {
    */
   constructor(
     private route: ActivatedRoute,
-    public countriesService: CountriesService
+    public countriesService: CountriesService,
+    private titleService: Title,
   ) {
     window.scroll(0,0);
   }
@@ -111,6 +113,10 @@ export class CountryComponent implements OnInit {
                 this.parseNativeName(singleCountry.name.nativeName);
                 this.parseCurrencies(singleCountry.currencies);
                 this.parseLanguages(singleCountry.languages);
+
+                this.titleService.setTitle(
+                  `${singleCountry.name.common} | Countries App`
+                );
               }
             });
           }
